@@ -10,16 +10,15 @@ public class Conexion {
     
    private Connection cnn = null;
 
-    //Constructor vacio de la clase usuario
+   // Metodo de conexion a nuestra BD
     public Connection obtenerConexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver"); //Drivers de la base de datos
-            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/plantilla?zeroDateTimeBehavior=convertToNull","root" , "");
+            // Conexión a Mysql
+            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/planilla?zeroDateTimeBehavior=convertToNull","root" , "");
             return cnn;
            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -28,7 +27,5 @@ public class Conexion {
     public static void main(String[] args) {
         Conexion objeto = new Conexion();
         objeto.obtenerConexion();
-    }
-    
-    
+    }    
 }

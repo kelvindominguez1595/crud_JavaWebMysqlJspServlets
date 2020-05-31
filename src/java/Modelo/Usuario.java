@@ -21,17 +21,14 @@ public class Usuario extends Conexion{
     
     Statement state;
     ResultSet result;
-
   
     public Integer getId_user() {
         return id_user;
     }
 
-
     public void setId_user(Integer id_user) {
         this.id_user = id_user;
-    }
-   
+    }   
     
      public String getNombres() {
         return nombres;
@@ -80,7 +77,6 @@ public class Usuario extends Conexion{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
     
     // DEBE DE EXISTAR PARA INICIALIZAR EL CONTRUCTOR 
     public Usuario() {
@@ -101,8 +97,9 @@ public class Usuario extends Conexion{
      //Metodo para insertar datos en la clase usuario
     public boolean insertarDatos(){
         try{
-            String miQuery = "insert into tb_usuario values(null,'" + nombres + "', '" + apellidos + "', '" + email + "', '" + usuario + "', '" + clave + "', '" + tipo + "');";
-            int estado = 0; //Estado de la insercion
+            // Consula Sql
+            String miQuery = "INSERT INTO tb_usuario VALUES(null,'" + nombres + "', '" + apellidos + "', '" + email + "', '" + usuario + "', '" + clave + "', '" + tipo + "');";
+            int estado; //Estado de la insercio
             state = obtenerConexion().createStatement();
             estado = state.executeUpdate(miQuery);
             if(estado == 1){
@@ -117,7 +114,7 @@ public class Usuario extends Conexion{
     
     public boolean eliminarDatos(){
         try{
-            String miQuery = "delete from tb_usuario where id_user='" + id_user +"'";
+            String miQuery = "DELETE FROM tb_usuario WHERE id_user='" + id_user +"'";
             int estado = 0;
             state = obtenerConexion().createStatement();
             estado = state.executeUpdate(miQuery);
@@ -134,7 +131,7 @@ public class Usuario extends Conexion{
     public ArrayList<Usuario> consultarRegistros(){
         ArrayList<Usuario> user = new ArrayList();        
         try{
-            String myQuery=  "select * from tb_usuario order by apellidos desc";
+            String myQuery=  "SELECT * FROM tb_usuario ORDER BY apellidos DESC";
 
             state = obtenerConexion().createStatement();
             result = state.executeQuery(myQuery);
@@ -161,7 +158,7 @@ public class Usuario extends Conexion{
  public Usuario ObtenerDatos(){ // Creo metodo para buscar el id del registro
      Usuario user = null;
   try{
-      String miQuery = "select * from tb_usuario where id_user = '" + id_user +"'";
+      String miQuery = "SELECT * FROM tb_usuario WHERE id_user = '" + id_user +"'";
       state = obtenerConexion().createStatement();      
       result = state.executeQuery(miQuery);
       if(result.next()){
@@ -183,16 +180,10 @@ public class Usuario extends Conexion{
   return user;
  }
 
-    public boolean modificarDatos(){
+    public boolean modificarDatos(){       
         try{
-            String pass="";
-            if(clave.isEmpty()){
-                pass="";
-            }else{
-                pass="clave=MD5('"+clave+"'),";
-            }
-            String miQuery = "update tb_usuario set nombres='"+ nombres + "',apellidos='" + apellidos + "',email='" + email + "',usuario='" + usuario + "',clave='" + clave + "' where id_user='" + id_user +"'";
-            int estado = 0; //Estado de la inserccion
+            String miQuery = "UPDATE tb_usuario SET nombres = '"+ nombres + "', apellidos = '" + apellidos + "', email = '" + email + "', usuario = '" + usuario + "',clave = '" + clave + "' WHERE id_user = '" + id_user +"'";
+            int estado; //Estado de la inserccion
             state = obtenerConexion().createStatement();
             estado = state.executeUpdate(miQuery);
             if(estado == 1){
@@ -200,11 +191,12 @@ public class Usuario extends Conexion{
                  }
             }catch (SQLException ex){
                     Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     }
             return false;
         }
     
-    public boolean actualizar(String id_userp,String apellidosp,String nombresp){
+    public boolean actualizar(String id_userp, String apellidosp, String nombresp){
         try{
             int estado = 0;
             String miQuery="update tb_usuario set id_user='" + id_user + "',nombres='" + nombres + "',apellidos='" + apellidos + "' where id_user='" + id_user +"';";

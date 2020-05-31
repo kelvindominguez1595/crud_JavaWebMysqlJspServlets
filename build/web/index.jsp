@@ -54,10 +54,11 @@
   <div class="row section">
     <div class="col s12">
       <ul class="tabs">
-          <li class="tab col s3"><a class="active" href="#test1"><h5>GUARDAR</h5></a></li>
-        <li class="tab col s3"><a href="#test2"><h5>LISTAR</h5></a></li>
-        <li class="tab col s3"><a href="#test3"><h5>ACTUALIZAR</h5></a></li>
-        <li class="tab col s3"><a href="#test4"><h5>BORRAR</h5></a></li>
+        <li class="tab col "><a class="active" href="#test5"><h5>BD</h5></a></li>
+        <li class="tab col "><a href="#test2"><h5>LISTAR</h5></a></li>
+        <li class="tab col "><a href="#test1"><h5>GUARDAR</h5></a></li>
+        <li class="tab col "><a href="#test3"><h5>ACTUALIZAR</h5></a></li>
+        <li class="tab col "><a href="#test4"><h5>BORRAR</h5></a></li>
       </ul>
     </div>
     <div id="test1" class="col s12">
@@ -251,8 +252,7 @@
             <img class="responsive-img"  src="images/actualizar/edicion.PNG"><br>
             SI HIZO TODO BIEN SIGUIENDO EL PIE DE LA LETRA DEBERIA DE CARGAR LOS DATOS EN LOS INPUT SI NO <BR>
             <img src="images/riete/nelson.png" class="responsive-img"> Por no leer bien....
-        </p>
-        
+        </p>        
         <p>
         <h5 class="center-align">CONTROLADOR <b>Modificar.java</b></h5>
         </p>
@@ -321,11 +321,44 @@
                 
         </p>
       </div>
-  </div>
- </div>
+ 
+      <div id="test5" class="col s12">
+       <h4 class="center-align">Bievenido/as</h4>
+        <p>
+            <h5 class="center-align">Saludos</h5>
+        </p>
+        <p class="flow-text">
+           Hola es un gusto saludarte, espero te sea de mucha utilidad este código, para que te funcione el proyecto,
+           debes de crear una base de datos llamada planilla y una tabla llamada tb_usuario; sigue este documento para 
+           que veas como cargar el proyeco.
+        </p>
         
-         
-              <!-- Pie de pagina -->
+        <p><h5 class="center-align">SCRIPT DE <b>BD</b></h5></p>
+        <p class="flow-text">
+            <blockquote>
+                <span class="blue-text text-darken-2">CREATE DATABASE</span> planilla; <br>
+                <span class="blue-text text-darken-2">USE</span> planilla; <br>
+                <p></p>
+                <span class="blue-text text-darken-2">CREATE TABLE</span> tb_usuario( <br>
+                id_user  <span class="blue-text text-darken-2"> int NOT null AUTO_INCREMENT</span>, <br>
+                nombres  <span class="blue-text text-darken-2">varchar(100) DEFAULT NUL</span>,<br>
+                apellidos  <span class="blue-text text-darken-2">varchar(100) DEFAULT NULL</span>,<br>
+                email  <span class="blue-text text-darken-2">varchar(150) DEFAULT NULL</span>,<br>
+                usuario  <span class="blue-text text-darken-2">varchar(30) DEFAULT NULL</span>,<br>
+                clave  <span class="blue-text text-darken-2">char(20)</span>,<br>
+                tipo  <span class="blue-text text-darken-2">char(20</span>),<br>
+                        <span class="blue-text text-darken-2">PRIMARY KEY(id_user)</span>)<br>
+                         <span class="blue-text text-darken-2"> ENGINE INNODB AUTO_INCREMENT 1</span>
+            </blockquote>
+        </p>
+        <p>
+               Esto lo capturamos en doGet de nuestro controlador de la siguiente manera:<br>          
+            <img class="responsive-img"  src="images/borrar/controlador.PNG">
+        </p>        
+      </div>
+  </div>
+ </div>  
+       <!-- Pie de pagina -->
        <footer class="page-footer purple darken-2">
           <div class="container">
             <div class="row">
@@ -351,8 +384,7 @@
             <a class="grey-text text-lighten-4 right" href="#!">Kelvin Domínguez - Development</a>
             </div>
           </div>
-        </footer>
-            
+        </footer>            
          <script src="js/jquery-3.4.1.min.js"></script>
          <script src="js/materialize.js"></script>
          <script src="js/init.js"></script>
